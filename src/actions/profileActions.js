@@ -56,7 +56,7 @@ export const deleteHeart = (id) => async (dispatch, getState) => {
   }
 
   const { data } = await axios.delete(
-      `/api/hearts/delete/${id}/`,
+      `https://careermaker.pythonanywhere.com/api/hearts/delete/${id}/`,
       config
   )
 
@@ -92,7 +92,7 @@ export const updateHeart = (heartlist, isHeart, canMessage) => async (dispatch, 
     };
     
     const { data } = await axios.put(
-      `/api/hearts/update/${heartlist._id}/`,
+      `https://careermaker.pythonanywhere.com/api/hearts/update/${heartlist._id}/`,
       {heartlist, isHeart: heartlist.isHeart, canMessage: heartlist.canMessage},
       config
     );
@@ -131,7 +131,7 @@ export const addHeartUser = (letter, userReceiver, isHeart, canMessage, resume) 
       },
     };
 
-    const { data } = await axios.post('/api/hearts/createheartlist/', { letter, userReceiver, isHeart, canMessage, resume }, config);
+    const { data } = await axios.post('https://careermaker.pythonanywhere.com/api/hearts/createheartlist/', { letter, userReceiver, isHeart, canMessage, resume }, config);
 
     dispatch({
       type: PROFILE_HEART_SUCCESS,
@@ -163,7 +163,7 @@ export const getUserHeartlist = (keyword = '', userInfo = null) => async (dispat
       config.headers['Authorization'] = `Bearer ${userInfo.token}`;
     }
   
-    const { data } = await axios.get(`/api/hearts/heartlist/`, config);
+    const { data } = await axios.get(`https://careermaker.pythonanywhere.com/api/hearts/heartlist/`, config);
   
     dispatch({
       type: PROFILE_HEART_LIST_SUCCESS,
@@ -194,7 +194,7 @@ export const getUserProfiles = (keyword = '', userInfo = null) => async (dispatc
         config.headers['Authorization'] = `Bearer ${userInfo.token}`;
       }
     
-      const { data } = await axios.get(`/api/profiles/myprofiles`, config);
+      const { data } = await axios.get(`https://careermaker.pythonanywhere.com/api/profiles/myprofiles`, config);
     
       dispatch({
         type: PROFILE_LIST_SUCCESS,
@@ -224,7 +224,7 @@ export const listProfiles = (keyword = '', userInfo = null) => async (dispatch) 
         config.headers['Authorization'] = `Bearer ${userInfo.token}`;
       }
     
-      const { data } = await axios.get(`/api/profiles${keyword}`, config);
+      const { data } = await axios.get(`https://careermaker.pythonanywhere.com/api/profiles${keyword}`, config);
     
       dispatch({
         type: PROFILE_LIST_SUCCESS,
@@ -244,7 +244,7 @@ export const listProfiles = (keyword = '', userInfo = null) => async (dispatch) 
 export const listTopProfiles = () => async (dispatch) => {
     try {
     dispatch({ type: PROFILE_TOP_REQUEST })
-    const { data } = await axios.get(`/api/profiles/top/`)
+    const { data } = await axios.get(`https://careermaker.pythonanywhere.com/api/profiles/top/`)
 
     dispatch({
         type: PROFILE_TOP_SUCCESS,
@@ -264,7 +264,7 @@ export const listTopProfiles = () => async (dispatch) => {
 export const listProfileDetails = (id) => async (dispatch) => {
     try {
     dispatch({ type: PROFILE_DETAILS_REQUEST })
-    const { data } = await axios.get(`/api/profiles/${id}`)
+    const { data } = await axios.get(`https://careermaker.pythonanywhere.com/api/profiles/${id}`)
 
     dispatch({
         type: PROFILE_DETAILS_SUCCESS,
@@ -299,7 +299,7 @@ export const deleteProfile = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-        `/api/profiles/delete/${id}/`,
+        `https://careermaker.pythonanywhere.com/api/profiles/delete/${id}/`,
         config
     )
 
@@ -336,7 +336,7 @@ export const createProfile = (isVerified) => async (dispatch, getState) => {
       };
       
       const { data } = await axios.post(
-        `/api/profiles/profileitem/create/`,
+        `https://careermaker.pythonanywhere.com/api/profiles/profileitem/create/`,
         {isVerified},
         config
       );
@@ -371,7 +371,7 @@ export const createProfile = (isVerified) => async (dispatch, getState) => {
               };
               
               const { data } = await axios.put(
-                `/api/profiles/update/${profile._id}/`,
+                `https://careermaker.pythonanywhere.com/api/profiles/update/${profile._id}/`,
                 profile,
                 config
               );
@@ -410,7 +410,7 @@ export const createProfile = (isVerified) => async (dispatch, getState) => {
                         },
                       };
                       
-                      await axios.post(`/api/profiles/${profileId}/reviews/create/`, review, config);
+                      await axios.post(`https://careermaker.pythonanywhere.com/api/profiles/${profileId}/reviews/create/`, review, config);
                       
                       dispatch({
                         type: PROFILE_CREATE_REVIEW_SUCCESS,

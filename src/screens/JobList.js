@@ -70,7 +70,7 @@ const HeartListScreen = ({ match, history }) => {
 
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/users', {
+        const response = await fetch('https://careermaker.pythonanywhere.com/api/users', {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
@@ -148,7 +148,7 @@ const handleFileUpload = async (e) => {
       },
     };
 
-    await axios.post('/api/hearts/upload/', formData, config);
+    await axios.post('https://careermaker.pythonanywhere.com/api/hearts/upload/', formData, config);
 
     setUploading(false);
 
